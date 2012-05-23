@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Barcodes{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<p>Code 39:</p>
+<img src="{{ url_for('render_code39', uuid=uuid) }}">
+<p>QR Code:</p>
+<img src="{{ url_for('render_qr', uuid=uuid) }}">
+{% if uuidint %}
+<p>EAN13:</p>
+<img src="{{ url_for('render_ean13', uuid=uuid) }}">
+{% endif %}
+{% endblock %}

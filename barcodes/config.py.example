@@ -1,0 +1,6 @@
+import os
+
+CURRENT_DIR = os.path.realpath(os.path.dirname(__file__))
+DATABASE = os.path.join(CURRENT_DIR, 'dev.db')
+DEBUG = True
+SECRET_KEY = 'some secret string'

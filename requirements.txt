@@ -1,0 +1,6 @@
+Flask==0.8
+Flask-Mail==0.6.1
+Flask-SQLAlchemy==0.16
+Flask-WTF==0.6
+pyBarcode==0.6
+qrcode==2.4.1
