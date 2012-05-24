@@ -39,7 +39,6 @@ def register():
 @app.route('/code39/<uuid>')
 def render_code39(uuid):
     response = make_response(gen_code39(uuid))
-    fp.close()
     response.headers["Content-type"] = "image/png"
     return response
 
@@ -47,7 +46,6 @@ def render_code39(uuid):
 @app.route('/ean13/<int:uuid>')
 def render_ean13(uuid):
     response = make_response(gen_ean13(uuid))
-    fp.close()
     response.headers["Content-type"] = "image/png"
     return response
 
@@ -55,7 +53,6 @@ def render_ean13(uuid):
 @app.route('/qr/<uuid>')
 def render_qr(uuid):
     response = make_response(gen_qr(uuid))
-    fp.close()
     response.headers["Content-type"] = "image/png"
     return response
 
@@ -76,7 +73,9 @@ def gen_qr(content):
     fp = StringIO()
     img = qrcode.make(content, box_size=5)
     img.save(fp)
-    return fp.getvalue()
+    image = fp.getvalue()
+    fp.close
+    return image
 
 
 def gen_code39(content):
@@ -88,7 +87,9 @@ def gen_code39(content):
         output=fp,
         writer=makepng,
     )
-    return fp.getvalue()
+    image = fp.getvalue()
+    fp.close()
+    return image
 
 
 def gen_ean13(content):
@@ -105,4 +106,6 @@ def gen_ean13(content):
         output=fp,
         writer=notext
     )
-    return fp.getvalue()
+    image = fp.getvalue()
+    fp.close()
+    return image
