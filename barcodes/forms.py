@@ -1,9 +1,10 @@
-from wtforms import Form, TextField
-from wtforms.validators import Length, Email
-from wtforms.validators import Required
+from flaskext.wtf import Form, TextField, Length, Email, Required
+from flaskext.wtf.html5 import EmailField
+
+
 class RegistrationForm(Form):
     fullname = TextField(
             'Full Name',
             [Required(), Length(min=2, max=200)]
         )
-    email = TextField('Email Address', [Required(), Email()])
+    email = EmailField('Email Address', [Required(), Email()])
